@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500&display=swap');
+.pageBody {
+    width: 100vw;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('https://i.imgur.com/E2tJVt0.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: #ffffff;
+    .copyNote {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        text-align: center;
+        font-size: 10pt;
+        color: rgb(182, 182, 182);
+        margin: 0;
+        padding: 0;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+}

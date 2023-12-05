@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+enum OrderType {
+  QUEST
+  LEVELING
+  PVM
+  ACHIEVEMENTS
+  CAPE_SERVICE
+}
+
+enum OrderStatus {
+  REQUESTING_BOOST
+  PAYMENT_PENDING
+  PAYMENT_FAILED
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED_BY_CUSTOMER
+  REFUNDED
+  REFUND_REQUESTED
+  PAUSED
+}
+
+
+model Order {
+  id         Int       @id @default(autoincrement())
+  type       OrderType
+  orderTime  DateTime  @default(now())
+  user_id String
+  assigned_employee String?
+
+  loginEmail    String
+  loginPassword String
+  isIronman     Boolean @default(false)
+
+  status OrderStatus @default(PENDING)
+
+  orderPayload String @db.Text // JSON, depending on the order type
+
+  price Float?
+
+  paidAt        DateTime?
+  paymentMethod String?
+  paymentId     String?
+
+  orderChatMessages OrderChatMessage[]
+
+  @@index([user_id], name: "user_id")
+
+}
+
+model OrderChatMessage {
+  id         Int      @id @default(autoincrement())
+  order      Order    @relation(fields: [orderId], references: [id])
+  orderId    Int
+  isCustomer Boolean
+  user_id String
+  
+  message    String
+  createdAt  DateTime @default(now())
+
+  @@index([orderId], name: "orderId")
+  @@index([user_id], name: "user_id")
+}

@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Teko:wght@300;400;500&display=swap');
+
+.order_layout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #ffffff;
+    color: #232323;
+    font-family: Roboto, sans-serif;
+    ;
+
+    .view_orderlist {
+        margin: 2em;
+    }
+    .view_order {
+        margin: 2em;
+    }
+
+    .pagination {
+        width: 100%;
+        display: flex;
+        box-sizing: border-box;
+        text-align: center;
+        margin-top: 1em;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loader {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+}
